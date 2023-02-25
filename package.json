@@ -1,0 +1,33 @@
+{
+  "name": "vimeo-videos-action",
+  "version": "1.0.0",
+  "description": "Sync YouTube videos into a website as files or posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "ncc build index.js --license licenses.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InSourceSoftware/vimeo-videos-action.git"
+  },
+  "keywords": [
+    "YouTube",
+    "video",
+    "playlist",
+    "sync",
+    "website"
+  ],
+  "author": "Steve Riesenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InSourceSoftware/vimeo-videos-action/issues"
+  },
+  "homepage": "https://github.com/InSourceSoftware/vimeo-videos-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {}
+}

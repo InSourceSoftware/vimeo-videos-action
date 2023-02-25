@@ -1,0 +1,47 @@
+name: 'Vimeo Videos Action'
+description: 'Sync Vimeo videos into a website as files or posts.'
+inputs:
+  access-token:
+    description: 'Vimeo personal access token with access to Vimeo API'
+    required: true
+  showcase-id:
+    description: 'Vimeo showcase id or album id'
+    required: true
+  thumbnail-size:
+    description: 'Thumbnail image size name, one of xs, sm, ms, md, ml, lg, xl'
+    required: false
+    default: 'default'
+  output-path:
+    description: 'Path to write output files to, defaults to _data/videos'
+    required: false
+    default: '_data/videos'
+  output-filename-template:
+    description: 'Output filename template for each output file including placeholders, defaults to ${position}.yml'
+    required: false
+    default: '${position}.yml'
+  output-content-template:
+    description: 'Output content template for each output file including placeholders'
+    required: false
+    default: |
+      uri: '${uri}'
+      name: '${name}'
+      description: '${description}'
+      thumbnailLink: '${thumbnailLink}'
+      link: '${link}'
+      playerEmbedUrl: '${playerEmbedUrl}'
+      duration: '${duration}'
+      width: '${width}'
+      height: '${height}'
+      userName: '${userName}'
+      userUri: '${userUri}'
+      userLink: '${userLink}'
+      userBio: '${userBio}'
+      userShortBio: '${userShortBio}'
+      position: '${position}'
+      videoId: '${videoId}'
+      createdTime: '${createdTime}'
+      modifiedTime: '${modifiedTime}'
+      releaseTime: '${releaseTime}'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
