@@ -62,7 +62,7 @@ async function fetchVideos(accessToken, showcaseId, thumbnailSize, outputPath, o
 
 function fetchPage(accessToken, showcaseId, page) {
   return new Promise((resolve, reject) => {
-    let url = `${VIMEO_URL}/me/albums/${showcaseId}/videos?per_page=100&sort=date&direction=desc`;
+    let url = `${VIMEO_URL}/me/albums/${showcaseId}/videos?per_page=100&sort=default`;
     if (page !== null) {
       url = `${url}&page=${page}`;
       console.log(`fetching page ${page} of ${showcaseId}`);
