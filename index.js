@@ -99,25 +99,25 @@ function writeFile(outputPath, filename, content) {
 function template(str, item, index, thumbnailSize) {
   const thumbnail = findThumbnail(item.pictures.sizes, thumbnailSize) || items.pictures.base_link;
   return str
-    .replace('${uri}', item.uri)
-    .replace('${name}', clean(item.name))
-    .replace('${description}', clean(item.description))
-    .replace('${thumbnailLink}', thumbnail.link)
-    .replace('${link}', item.link)
-    .replace('${playerEmbedUrl}', item.player_embed_url)
-    .replace('${duration}', item.duration)
-    .replace('${width}', item.width)
-    .replace('${height}', item.height)
-    .replace('${userName}', clean(item.user.name))
-    .replace('${userUri}', item.user.uri)
-    .replace('${userLink}', item.user.link)
-    .replace('${userBio}', clean(item.user.bio))
-    .replace('${userShortBio}', clean(item.user.short_bio))
-    .replace('${position}', Number.parseInt(index) + 1)
-    .replace('${videoId}', item.uri.replace(/\/videos\//, ''))
-    .replace('${createdTime}', item.created_time)
-    .replace('${modifiedTime}', item.modified_time)
-    .replace('${releaseTime}', item.release_time);
+    .replaceAll('${uri}', item.uri)
+    .replaceAll('${name}', clean(item.name))
+    .replaceAll('${description}', clean(item.description))
+    .replaceAll('${thumbnailLink}', thumbnail.link)
+    .replaceAll('${link}', item.link)
+    .replaceAll('${playerEmbedUrl}', item.player_embed_url)
+    .replaceAll('${duration}', item.duration)
+    .replaceAll('${width}', item.width)
+    .replaceAll('${height}', item.height)
+    .replaceAll('${userName}', clean(item.user.name))
+    .replaceAll('${userUri}', item.user.uri)
+    .replaceAll('${userLink}', item.user.link)
+    .replaceAll('${userBio}', clean(item.user.bio))
+    .replaceAll('${userShortBio}', clean(item.user.short_bio))
+    .replaceAll('${position}', Number.parseInt(index) + 1)
+    .replaceAll('${videoId}', item.uri.replace(/\/videos\//, ''))
+    .replaceAll('${createdTime}', item.created_time)
+    .replaceAll('${modifiedTime}', item.modified_time)
+    .replaceAll('${releaseTime}', item.release_time);
 }
 
 function clean(str) {
