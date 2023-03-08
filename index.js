@@ -30,7 +30,7 @@ function main() {
   const outputContentTemplate = core.getInput('output-content-template');
   console.log(`outputContentTemplate=${outputContentTemplate}`);
 
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  const payload = JSON.stringify(github.context.payload, undefined, 2);
   console.log(`payload=${payload}`);
 
   console.log('Fetching videos...');
