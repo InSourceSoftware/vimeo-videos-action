@@ -42573,6 +42573,10 @@ function main() {
   console.log(`showcase-id=${showcaseId}`);
   const thumbnailSize = core.getInput('thumbnail-size');
   console.log(`thumbnailSize=${thumbnailSize}`);
+  const sort = core.getInput('sort');
+  console.log(`thumbnailSize=${thumbnailSize}`);
+  const order = core.getInput('order');
+  console.log(`thumbnailSize=${thumbnailSize}`);
   const outputPath = core.getInput('output-path');
   console.log(`outputPath=${outputPath}`);
   const outputFilenameTemplate = core.getInput('output-filename-template');
@@ -42585,7 +42589,7 @@ function main() {
 
   console.log('Fetching videos...');
   try {
-    fetchVideos(accessToken, showcaseId, thumbnailSize, outputPath, outputFilenameTemplate, outputContentTemplate)
+    fetchVideos(accessToken, showcaseId, thumbnailSize, sort, order, outputPath, outputFilenameTemplate, outputContentTemplate)
       .then(() => console.log('finished'));
   } catch (error) {
     console.error(error);
@@ -42593,8 +42597,8 @@ function main() {
   }
 }
 
-async function fetchVideos(accessToken, showcaseId, thumbnailSize, outputPath, outputFilenameTemplate, outputContentTemplate) {
-  let data = await fetchPage(accessToken, showcaseId, null);
+async function fetchVideos(accessToken, showcaseId, thumbnailSize, sort, order, outputPath, outputFilenameTemplate, outputContentTemplate) {
+  let data = await fetchPage(accessToken, showcaseId, sort, order, null);
   console.log(`found ${data.total} total results`);
   const items = data.data;
   while (data.paging && data.paging.next !== null) {
@@ -42610,9 +42614,12 @@ async function fetchVideos(accessToken, showcaseId, thumbnailSize, outputPath, o
   }
 }
 
-function fetchPage(accessToken, showcaseId, page) {
+function fetchPage(accessToken, showcaseId, sort, order, page) {
   return new Promise((resolve, reject) => {
-    let url = `${VIMEO_URL}/me/albums/${showcaseId}/videos?per_page=100&sort=default`;
+    let url = `${VIMEO_URL}/me/albums/${showcaseId}/videos?per_page=100&sort=${sort}`;
+    if (order !== null) {
+      url = `${url}&direction=${order}`;
+    }
     if (page !== null) {
       url = `${url}&page=${page}`;
       console.log(`fetching page ${page} of ${showcaseId}`);

@@ -17,6 +17,14 @@ files or posts on a website.
 
 **Optional** Thumbnail image size name, one of xs, sm, ms, md, ml, lg, xl
 
+### `sort`
+
+**Optional** Video sort, one of default, alphabetical, comments, date, duration, likes, manual, modified_time, plays
+
+### `order`
+
+**Optional** Video sort order, one of asc or desc
+
 ### `output-path`
 
 **Optional** Path to write output files to, defaults to `_data/videos`
@@ -85,6 +93,8 @@ with:
   access-token: ${{ secrets.VIMEO_ACCESS_TOKEN }}
   showcase-id: 'xyz'
   thumbnail-size: 'lg'
+  sort: 'manual'
+  order: 'desc'
   output-path: '_data/videos'
   output-filename-template: '${position}.yml'
   output-content-template: |
