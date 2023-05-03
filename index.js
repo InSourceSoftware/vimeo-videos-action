@@ -24,9 +24,9 @@ function main() {
   const thumbnailSize = core.getInput('thumbnail-size');
   console.log(`thumbnailSize=${thumbnailSize}`);
   const sort = core.getInput('sort');
-  console.log(`thumbnailSize=${thumbnailSize}`);
+  console.log(`sort=${sort}`);
   const order = core.getInput('order');
-  console.log(`thumbnailSize=${thumbnailSize}`);
+  console.log(`order=${order}`);
   const outputPath = core.getInput('output-path');
   console.log(`outputPath=${outputPath}`);
   const outputFilenameTemplate = core.getInput('output-filename-template');
@@ -48,7 +48,9 @@ function main() {
 }
 
 async function fetchVideos(accessToken, showcaseId, thumbnailSize, sort, order, outputPath, outputFilenameTemplate, outputContentTemplate) {
+  console.log(sort + ' ' + order);
   let data = await fetchPage(accessToken, showcaseId, sort, order, null);
+  console.log(data);
   console.log(`found ${data.total} total results`);
   const items = data.data;
   while (data.paging && data.paging.next !== null) {
@@ -70,6 +72,7 @@ function fetchPage(accessToken, showcaseId, sort, order, page) {
     if (order !== null) {
       url = `${url}&direction=${order}`;
     }
+    console.log(url);
     if (page !== null) {
       url = `${url}&page=${page}`;
       console.log(`fetching page ${page} of ${showcaseId}`);
